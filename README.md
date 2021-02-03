@@ -1,4 +1,31 @@
-# RAFT
+# FlowBlur-App
+This code is build on top of **RAFT: Recurrent All Pairs Field Transforms for Optical Flow**, the original readme is also included in this file.
+
+[You can download the Windows build clicking here.](https://grisk.itch.io/flowblur-app)
+
+# Requirement
+```
+pip install ffmpeg
+pip install numba
+pip install numpy
+pip install opencv-python
+pip install pillow
+pip install PyQt5
+pip install scikit-learn
+pip install torch
+pip install torchvision
+pip install tqdm
+```
+
+# Starting with GUI
+First make sure to download the models from RAFT and add to the models folder.
+After that run this line to start the GUI:
+```
+python my_code.py
+```
+
+
+# RAFT Readme:
 This repository contains the source code for our paper:
 
 [RAFT: Recurrent All Pairs Field Transforms for Optical Flow](https://arxiv.org/pdf/2003.12039.pdf)<br/>
