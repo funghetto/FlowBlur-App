@@ -320,7 +320,10 @@ class My_Ui_Dialog(Ui_MainWindow):
     def RenderVideo(self, input_file, type = 0):
         cap = cv2.VideoCapture(input_file, cv2.CAP_FFMPEG)
         ret, framePrev = cap.read()
-        framePrev = cv2.resize(framePrev, dsize=(3840, 2160), interpolation=cv2.INTER_CUBIC)
+        if self.buttonhd.isChecked():
+            framePrev = cv2.resize(framePrev, dsize=(1920, 1080), interpolation=cv2.INTER_CUBIC)
+        if self.buttonshorts.isChecked():
+            framePrev = cv2.resize(framePrev, dsize=(1080, 1920), interpolation=cv2.INTER_CUBIC)
 
         basename = os.path.basename(input_file)
         basefile = os.path.splitext(basename)[0]
@@ -376,7 +379,10 @@ class My_Ui_Dialog(Ui_MainWindow):
                 ret, frameNext = cap.read()
                 if not ret:
                     break
-                frameNext = cv2.resize(frameNext, dsize=(3840, 2160), interpolation=cv2.INTER_AREA)
+                if self.buttonhd.isChecked():
+                    frameNext = cv2.resize(frameNext, dsize=(1920, 1080), interpolation=cv2.INTER_AREA)
+                if self.buttonshorts.isChecked():
+                    frameNext = cv2.resize(frameNext, dsize=(1080, 1920), interpolation=cv2.INTER_AREA)
 
                 framePrevC = torch.from_numpy(framePrev).permute(2, 0, 1).unsqueeze(0).float().to("cuda")
                 frameNextC = torch.from_numpy(frameNext).permute(2, 0, 1).unsqueeze(0).float().to("cuda")
