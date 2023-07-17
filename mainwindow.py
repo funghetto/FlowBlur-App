@@ -13,6 +13,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setObjectName("pushButton")
+
+        self.label_20 = QtWidgets.QLabel(self.centralwidget)
+        self.label_20.setObjectName("label_20")
+        self.label_20.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.horizontalLayout_6.addWidget(self.label_20)
+        self.buttonhd = QtWidgets.QRadioButton(self.centralwidget)
+        self.buttonhd.setObjectName(u"buttonhd")
+        self.buttonhd.setChecked(True)
+        self.horizontalLayout_6.addWidget(self.buttonhd)
+        self.buttonshorts = QtWidgets.QRadioButton(self.centralwidget)
+        self.buttonshorts.setObjectName(u"buttonshorts")
+        self.buttonshorts.setChecked(False)
+        self.horizontalLayout_6.addWidget(self.buttonshorts)
+        
         self.horizontalLayout_6.addWidget(self.pushButton)
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setObjectName("pushButton_2")
@@ -204,6 +218,12 @@ class Ui_MainWindow(object):
         self.formatBox.setItemText(0, _translate("MainWindow", "MP4"))
         self.formatBox.setItemText(1, _translate("MainWindow", "PNG Seq."))
         self.renderBtn.setText(_translate("MainWindow", "Render Video"))
+        self.label_20.setText(_translate("MainWindow", "Resolution: "))
+        self.formatBox.setItemText(0, _translate("MainWindow", "MP4"))
+        self.formatBox.setItemText(1, _translate("MainWindow", "PNG Seq."))
+        self.renderBtn.setText(_translate("MainWindow", "Render Video"))
+        self.buttonhd.setText(QtCore.QCoreApplication.translate("MainWindow", u"HD", None))
+        self.buttonshorts.setText(QtCore.QCoreApplication.translate("MainWindow", u"Shorts", None))
 
 
 if __name__ == "__main__":
