@@ -4,7 +4,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(854, 600)
+        MainWindow.resize(1000, 700)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -18,15 +18,31 @@ class Ui_MainWindow(object):
         self.label_20.setObjectName("label_20")
         self.label_20.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.horizontalLayout_6.addWidget(self.label_20)
-        self.buttonhd = QtWidgets.QRadioButton(self.centralwidget)
-        self.buttonhd.setObjectName(u"buttonhd")
-        self.buttonhd.setChecked(True)
-        self.horizontalLayout_6.addWidget(self.buttonhd)
-        self.buttonshorts = QtWidgets.QRadioButton(self.centralwidget)
-        self.buttonshorts.setObjectName(u"buttonshorts")
-        self.buttonshorts.setChecked(False)
-        self.horizontalLayout_6.addWidget(self.buttonshorts)
+        self.horizontalres_label = QtWidgets.QLabel(self.centralwidget)
+        self.horizontalres_label.setObjectName(u"horizontalres_label")
+        self.horizontalres_label.setMaximumSize(QtCore.QSize(150, 30)) 
+        self.horizontalLayout_6.addWidget(self.horizontalres_label)
+
+
+        self.horizontalres = QtWidgets.QLineEdit(self.centralwidget)
+        self.horizontalres.setObjectName(u"horizontalres")
+        self.horizontalres.setEnabled(True)
+        self.horizontalres.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.horizontalres.setReadOnly(False)
+        self.horizontalLayout_6.addWidget(self.horizontalres)
         
+        self.verticalres_label = QtWidgets.QLabel(self.centralwidget)
+        self.verticalres_label.setObjectName(u"verticalres_label")
+        self.verticalres_label.setMaximumSize(QtCore.QSize(150, 30)) 
+        self.horizontalLayout_6.addWidget(self.verticalres_label)
+
+        self.verticalres = QtWidgets.QLineEdit(self.centralwidget)
+        self.verticalres.setObjectName(u"verticalres")
+        self.verticalres.setEnabled(True)
+        self.verticalres.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.verticalres.setReadOnly(False)
+        self.horizontalLayout_6.addWidget(self.verticalres)
+
         self.horizontalLayout_6.addWidget(self.pushButton)
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setObjectName("pushButton_2")
@@ -215,16 +231,12 @@ class Ui_MainWindow(object):
         self.frameQtd.setText(_translate("MainWindow", "Frame: 0"))
         self.label_3.setText(_translate("MainWindow", "GPU:"))
         self.label_7.setText(_translate("MainWindow", "Output Format:"))
-        self.formatBox.setItemText(0, _translate("MainWindow", "MP4"))
-        self.formatBox.setItemText(1, _translate("MainWindow", "PNG Seq."))
-        self.renderBtn.setText(_translate("MainWindow", "Render Video"))
         self.label_20.setText(_translate("MainWindow", "Resolution: "))
+        self.horizontalres_label.setText(_translate("MainWindow", "Horizontal Res: "))
+        self.verticalres_label.setText(_translate("MainWindow", "Vertical Res: "))
         self.formatBox.setItemText(0, _translate("MainWindow", "MP4"))
         self.formatBox.setItemText(1, _translate("MainWindow", "PNG Seq."))
         self.renderBtn.setText(_translate("MainWindow", "Render Video"))
-        self.buttonhd.setText(QtCore.QCoreApplication.translate("MainWindow", u"HD", None))
-        self.buttonshorts.setText(QtCore.QCoreApplication.translate("MainWindow", u"Shorts", None))
-
 
 if __name__ == "__main__":
     import sys

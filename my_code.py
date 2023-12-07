@@ -72,8 +72,7 @@ class My_Ui_Dialog(Ui_MainWindow):
         self.blurForce.valueChanged.connect(self.RenderFrame)
         self.blurStrength.valueChanged.connect(self.RenderFrame)
         self.blurSmooth.valueChanged.connect(self.RenderFrame)
-        
-        
+
         if not torch.cuda.is_available():
             self.MessageBox("Error", "This application can be real slow without a compatible Nvidia Card.")
 
@@ -82,7 +81,6 @@ class My_Ui_Dialog(Ui_MainWindow):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         self.selectFiles, _ = QFileDialog.getOpenFileName()
-
         process = subprocess.Popen(
             "ffmpeg -i \"{}\" -map 0:v:0 -c copy -f null -".format(self.selectFiles)
             , stdout=subprocess.PIPE , stderr=subprocess.STDOUT,universal_newlines=True)
@@ -320,10 +318,9 @@ class My_Ui_Dialog(Ui_MainWindow):
     def RenderVideo(self, input_file, type = 0):
         cap = cv2.VideoCapture(input_file, cv2.CAP_FFMPEG)
         ret, framePrev = cap.read()
-        if self.buttonhd.isChecked():
-            framePrev = cv2.resize(framePrev, dsize=(1920, 1080), interpolation=cv2.INTER_CUBIC)
-        if self.buttonshorts.isChecked():
-            framePrev = cv2.resize(framePrev, dsize=(1080, 1920), interpolation=cv2.INTER_CUBIC)
+
+
+        framePrev = cv2.resize(framePrev, dsize=(int(self.horizontalres.text()), int(self.verticalres.text())), interpolation=cv2.INTER_CUBIC)
 
         basename = os.path.basename(input_file)
         basefile = os.path.splitext(basename)[0]
@@ -379,11 +376,7 @@ class My_Ui_Dialog(Ui_MainWindow):
                 ret, frameNext = cap.read()
                 if not ret:
                     break
-                if self.buttonhd.isChecked():
-                    frameNext = cv2.resize(frameNext, dsize=(1920, 1080), interpolation=cv2.INTER_AREA)
-                if self.buttonshorts.isChecked():
-                    frameNext = cv2.resize(frameNext, dsize=(1080, 1920), interpolation=cv2.INTER_AREA)
-
+                frameNext = cv2.resize(frameNext, dsize=(int(self.horizontalres.text()), int(self.verticalres.text())), interpolation=cv2.INTER_AREA)
                 framePrevC = torch.from_numpy(framePrev).permute(2, 0, 1).unsqueeze(0).float().to("cuda")
                 frameNextC = torch.from_numpy(frameNext).permute(2, 0, 1).unsqueeze(0).float().to("cuda")
 
