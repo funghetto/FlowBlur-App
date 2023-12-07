@@ -1,4 +1,4 @@
-This fork add an option for HD 16:9 or 1080x1920 res for shorts.
+This fork add an option for HD and custom resolutions
 # FlowBlur-App
 This code is build on top of **RAFT: Recurrent All Pairs Field Transforms for Optical Flow**, the original readme is also included in this file.
 
